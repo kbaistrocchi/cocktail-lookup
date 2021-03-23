@@ -1,5 +1,6 @@
 import './App.scss';
 import SearchForm from './components/search-form/search-form.component.jsx';
+import SearchResults from './components/search-results/search-results.jsx';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       </header>
       <main>
         <SearchForm/>
+        <SearchResults/>
+
            
       </main>
     </div>
