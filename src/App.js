@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import SearchForm from './components/search-form/search-form.component.jsx';
 
 function App() {
   return (
