@@ -1,12 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setSearchTerm } from '../../redux/search/search.actions';
 
-const InputField = ({ id, value, onChange }) => (
+
+const InputField = ({ id, searchTerm, setSearchTerm }) => (
+
     <input 
         type="text" 
         id={id}
-        value={value}
-        onChange={onChange}
+        value={searchTerm}
+        onChange={(e) => {
+            setSearchTerm(e.target.value);
+        }}
     />
 )
 
-export default InputField;
+const mapStateToProps = state => ({
+    searchTerm: state.search.searchTerm,
+})
+
+const mapDispatchToProps = dispatch => ({
+    setSearchTerm: term => dispatch(setSearchTerm(term)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputField);
