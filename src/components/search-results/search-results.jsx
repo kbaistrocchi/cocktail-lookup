@@ -1,39 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class SearchResults extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            error: null,
-            isLoaded: false,
-            items: [],
-        };
-    }
+const SearchResults = ({ errorMessage, isFetching, items }) => {
 
-    componentDidMount() {
-        fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin")
-            .then(res => res.json())
-            .then(json => {
-                this.setState({
-                    isLoaded: true,
-                    items: json.drinks
-                },
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                })
-            });
-    }
-
-    render() {
-
-        const { error, isLoaded, items } = this.state;
-        if (error) {
-            return <div>Error: {error.message}</div>
-        } else if (!isLoaded) {
-            return <div>Try searching for an alcoholic ingredient, like "vodka" or "rum"</div>
+        if (errorMessage) {
+            return <div>Error: {errorMessage}</div>
+        } 
+        else if (isFetching) {
+            return <div>Loading...</div>
         }
         else {
             return (
@@ -47,7 +21,12 @@ class SearchResults extends React.Component {
                     
             );
         }
-    };
-}
+    }
 
-export default SearchResults;
+const mapStateToProps = state => ({
+    errorMessage: state.search.errorMessage,
+    isFetching: state.search.isFetching,
+    items: state.search.items
+})
+
+export default connect(mapStateToProps)(SearchResults);
