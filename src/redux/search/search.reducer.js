@@ -16,6 +16,12 @@ const searchReducer = (state = INITIAL_STATE, action) => {
                 [action.payload1]: action.payload2
             };
 
+        case 'UPDATE_LATEST_SEARCH_TERM':
+            return {
+                ...state,
+                latestSearchTerm: action.payload
+            }
+
         case 'FETCH_ITEMS_START':
             return {
                 ...state,

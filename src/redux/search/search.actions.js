@@ -4,6 +4,11 @@ export const setSearchTerm = (name, value) => ({
     payload2: value
 });
 
+export const updateLatestSearchTerm = value => ({
+    type: 'UPDATE_LATEST_SEARCH_TERM',
+    payload: value
+})
+
 export const fetchItemsStart = () => ({
     type: 'FETCH_ITEMS_START'
 })
