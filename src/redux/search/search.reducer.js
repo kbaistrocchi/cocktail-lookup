@@ -6,6 +6,8 @@ const INITIAL_STATE = {
     primarySearchItems: [],
     secondarySearchItems: [],
     latestSearchTerm: '',
+    latestSecondaryTerm: '',
+    filteredItems: []
 }
 
 const searchReducer = (state = INITIAL_STATE, action) => {
@@ -19,7 +21,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
         case 'UPDATE_LATEST_SEARCH_TERM':
             return {
                 ...state,
-                latestSearchTerm: action.payload
+                [action.payload2]: action.payload1
             }
 
         case 'FETCH_ITEMS_START':
@@ -47,7 +49,25 @@ const searchReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 secondarySearchItems: []
-            }
+            };
+
+        case 'UPDATE_FILTERED_ITEMS':
+            const filteredDrinks = [];
+            // create array of only drink ids from second list
+            const secondaryIds = [];
+            state.secondarySearchItems.forEach(drinkObj => {
+                secondaryIds.push(drinkObj.idDrink);
+            });
+            // if ids from second list are in the first list, then add drink to new refined list
+            state.primarySearchItems.forEach(drinkObj => {
+                if(secondaryIds.includes(drinkObj.idDrink)) {
+                    filteredDrinks.push(drinkObj);
+                }
+            });
+            return {
+                ...state,
+                filteredItems: filteredDrinks
+            };
 
         case 'CLEAR_FORM':
             return {

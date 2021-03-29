@@ -5,7 +5,6 @@ import ResetFormBtn from '../reset-form-btn/reset-form-btn.component';
 
 import {
     fetchItemsStartAsync,
-    clearSecondaryItems,
     updateLatestSearchTerm
 } from '../../redux/search/search.actions';
 
@@ -19,35 +18,30 @@ class SearchForm extends React.Component {
             fetchItemsStartAsync,
             updateLatestSearchTerm
         } = this.props;
-        console.log("user searched for: ", primarySearchTerm); 
-        // Search only 1 ingredient
-        updateLatestSearchTerm(primarySearchTerm);
-        if(secondarySearchTerm.length < 1) {
-            fetchItemsStartAsync(primarySearchTerm, "primarySearchItems");
-            clearSecondaryItems();
-            
-        }
-        else {
-            fetchItemsStartAsync(primarySearchTerm, "primarySearchItems");
+        if(e.target.name === "refine") {
             fetchItemsStartAsync(secondarySearchTerm, "secondarySearchItems");
+            updateLatestSearchTerm(secondarySearchTerm, "latestSecondaryTerm");
         }
-    };
+        else if (e.target.name === "init-search") {
+            fetchItemsStartAsync(primarySearchTerm, "primarySearchItems");
+            updateLatestSearchTerm(primarySearchTerm, "latestSearchTerm");
+        }
+        else return <p>Error</p>
+    }
 
 
     render() {
         const {
-            isFetching,
-            latestSearchTerm,
+            filteredItems,
             primarySearchTerm,
             secondarySearchTerm,
             primarySearchItems,
-            secondarySearchItems
         } = this.props;
 
-        
-
-
-        return(
+        if(filteredItems.length > 0) {
+            return <ResetFormBtn/>
+        }
+        else return (
             <div>
                 <form role="search">
                 {
@@ -77,6 +71,7 @@ class SearchForm extends React.Component {
 
                     <input
                         type="submit"
+                        name={primarySearchItems.length > 0 ? "refine" : "init-search"}
                         value={
                             (primarySearchItems.length > 0 ? "Refine search" : "Search")
                         }
@@ -91,18 +86,15 @@ class SearchForm extends React.Component {
 }; 
 
 const mapStateToProps = state => ({
-    latestSearchTerm: state.search.latestSearchTerm,
+    filteredItems: state.search.filteredItems,
     primarySearchTerm: state.search.primarySearchTerm,
     secondarySearchTerm: state.search.secondarySearchTerm,
-    isFetching: state.search.isFetching,
-    primarySearchItems: state.search.primarySearchItems,
-    secondarySearchItems: state.search.secondarySearchItems,
+    primarySearchItems: state.search.primarySearchItems
 })
 
 const mapDispatchToProps = dispatch => ({
     fetchItemsStartAsync: (term, listToUpdate) => dispatch(fetchItemsStartAsync(term, listToUpdate)),
-    updateLatestSearchTerm: (value) => dispatch(updateLatestSearchTerm(value)),
-    clearSecondaryItems: () => dispatch(clearSecondaryItems())
+    updateLatestSearchTerm: (value, termToUpdate) => dispatch(updateLatestSearchTerm(value, termToUpdate))
 })
 
 
