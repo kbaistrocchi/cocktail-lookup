@@ -1,25 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RefinedSearchResults from '../refined-search/refined-search';
-import SearchResultsHeader from '../search-results/header.component';
+import SearchResultsHeader from '../results-header/results-header.component';
 
-// Need to rework logic to not show results when user is typing
-// Add a clear search button
-// Change what is displayed
 
 const SearchResults = ({
-        errorMessage,
+        filteredItems,
         isFetching,
-        primarySearchItems,
-        primarySearchTerm,
-        secondarySearchItems,
-        secondarySearchTerm
+        latestSecondaryTerm,
+        primarySearchItems
     }) => {
 
-        if (errorMessage) {
-            return <div>Error: {errorMessage}</div>
-        } 
-        else if (isFetching) {
+        if (isFetching) {
             return <div>Loading...</div>
         }
         else {
@@ -27,8 +18,12 @@ const SearchResults = ({
                 <div>
                     <SearchResultsHeader/>
                     {
-                        (secondarySearchTerm.length > 1) ? 
-                            <RefinedSearchResults/> :
+                        (latestSecondaryTerm.length > 0) ? 
+                        <ul>
+                            {filteredItems.map(item => (
+                                <li key={item.idDrink}>{item.strDrink}</li>
+                            ))}
+                        </ul> :
                             <ul>
                                 {primarySearchItems.map(item => (
                                     <li key={item.idDrink}>{item.strDrink}</li>
@@ -45,12 +40,10 @@ const SearchResults = ({
     }
 
 const mapStateToProps = state => ({
-    errorMessage: state.search.errorMessage,
     isFetching: state.search.isFetching,
-    primarySearchItems: state.search.primarySearchItems,
-    primarySearchTerm: state.search.primarySearchTerm,
-    secondarySearchItems: state.search.secondarySearchItems,
-    secondarySearchTerm: state.search.secondarySearchTerm
+    filteredItems: state.search.filteredItems,
+    latestSecondaryTerm: state.search.latestSecondaryTerm,
+    primarySearchItems: state.search.primarySearchItems
 })
 
 export default connect(mapStateToProps)(SearchResults);
