@@ -31,3 +31,11 @@ export const fetchItemsStartAsync = (term, listToUpdate) => {
             }).catch(error => dispatch(fetchItemsFailure(error.message)));
     }
 }
+
+export const clearSecondaryItems = () => ({
+    type: 'CLEAR_SECONDARY_ITEMS'
+})
+
+export const clearForm = () => ({
+    type: 'CLEAR_FORM'
+})

@@ -37,6 +37,17 @@ const searchReducer = (state = INITIAL_STATE, action) => {
                 errorMessage: action.payload
             };
 
+        case 'CLEAR_SECONDARY_ITEMS':
+            return {
+                ...state,
+                secondarySearchItems: []
+            }
+
+        case 'CLEAR_FORM':
+            return {
+                ...INITIAL_STATE
+            }
+
         default:
             return state;
 
