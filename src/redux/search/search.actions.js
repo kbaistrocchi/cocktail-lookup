@@ -8,9 +8,10 @@ export const fetchItemsStart = () => ({
     type: 'FETCH_ITEMS_START'
 })
 
-export const fetchItemsSuccess = itemsMap => ({
+export const fetchItemsSuccess = (itemsMap, listToUpdate) => ({
     type: 'FETCH_ITEMS_SUCCESS',
-    payload: itemsMap
+    payload1: listToUpdate,
+    payload2: itemsMap
 })
 
 export const fetchItemsFailure = errorMessage => ({
@@ -18,18 +19,15 @@ export const fetchItemsFailure = errorMessage => ({
     payload: errorMessage
 })
 
-export const fetchItemsStartAsync = (term) => {
-    console.log("term", term);
-    const apiRoot = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
-    const filteredApi = apiRoot.concat(term);
-    console.log("api", filteredApi);
+export const fetchItemsStartAsync = (term, listToUpdate) => {
+    console.log("listToUpdate", listToUpdate);
     return dispatch => {
         dispatch(fetchItemsStart());
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${term}`)
             .then(res => res.json())
             .then((result) => {
                 const itemsMap = result.drinks;
-                dispatch(fetchItemsSuccess(itemsMap));
+                dispatch(fetchItemsSuccess(itemsMap, listToUpdate));
             }).catch(error => dispatch(fetchItemsFailure(error.message)));
     }
 }

@@ -3,7 +3,9 @@ const INITIAL_STATE = {
     secondarySearchTerm: '',
     errorMessage: undefined,
     isFetching: false,
-    items: [],
+    primarySearchItems: [],
+    secondarySearchItems: [],
+    latestSearchTerm: '',
 }
 
 const searchReducer = (state = INITIAL_STATE, action) => {
@@ -25,7 +27,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isFetching: false,
-                items: action.payload,
+                [action.payload1]: action.payload2,
             };
 
         case 'FETCH_ITEMS_FAILURE':
