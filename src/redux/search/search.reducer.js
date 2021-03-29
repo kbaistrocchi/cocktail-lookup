@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-    searchTerm: '',
+    primarySearchTerm: '',
+    secondarySearchTerm: '',
     errorMessage: undefined,
     isFetching: false,
     items: [],
@@ -10,7 +11,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
         case 'SET_SEARCH_TERM':
             return {
                 ...state,
-                searchTerm: action.payload
+                [action.payload1]: action.payload2
             };
 
         case 'FETCH_ITEMS_START':

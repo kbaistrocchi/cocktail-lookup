@@ -1,6 +1,7 @@
-export const setSearchTerm = term => ({
+export const setSearchTerm = (name, value) => ({
     type: 'SET_SEARCH_TERM',
-    payload: term
+    payload1: name,
+    payload2: value
 });
 
 export const fetchItemsStart = () => ({

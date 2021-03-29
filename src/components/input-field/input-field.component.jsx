@@ -3,24 +3,23 @@ import { connect } from 'react-redux';
 import { setSearchTerm } from '../../redux/search/search.actions';
 
 
-const InputField = ({ id, searchTerm, setSearchTerm }) => (
+const InputField = ({ id, name, value, setSearchTerm }) => (
 
     <input 
-        type="text" 
+        type="text"
+        name={name} 
         id={id}
-        value={searchTerm}
+        value={value}
         onChange={(e) => {
-            setSearchTerm(e.target.value);
+            const { name, value } = e.target;
+            console.log("name & value:", name, value)
+            setSearchTerm(name, value);
         }}
     />
 )
 
-const mapStateToProps = state => ({
-    searchTerm: state.search.searchTerm,
-})
-
 const mapDispatchToProps = dispatch => ({
-    setSearchTerm: term => dispatch(setSearchTerm(term)),
+    setSearchTerm: (name, value) => dispatch(setSearchTerm(name, value)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputField);
+export default connect(null, mapDispatchToProps)(InputField);
