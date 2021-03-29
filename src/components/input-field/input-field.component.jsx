@@ -12,7 +12,6 @@ const InputField = ({ id, name, value, setSearchTerm }) => (
         value={value}
         onChange={(e) => {
             const { name, value } = e.target;
-            console.log("name & value:", name, value)
             setSearchTerm(name, value);
         }}
     />
