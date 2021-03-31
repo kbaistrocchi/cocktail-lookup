@@ -6,7 +6,8 @@ import { setSearchTerm } from '../../redux/search/search.actions';
 const InputField = ({ id, name, value, setSearchTerm }) => (
 
     <input 
-        type="text"
+        type="search"
+        className="ingredient-search-field"
         name={name} 
         id={id}
         value={value}

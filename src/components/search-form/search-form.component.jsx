@@ -61,7 +61,7 @@ class SearchForm extends React.Component {
                     // otherwise display the search field
                         <div>
                             <label htmlFor="initial-ingredient">Enter an ingredient to search for cocktails</label>
-                            <InputField 
+                            <InputField
                                 id="initial-ingredient"
                                 name="primarySearchTerm"
                                 value={primarySearchTerm}
