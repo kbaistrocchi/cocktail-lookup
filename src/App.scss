@@ -1,17 +1,61 @@
 .App {
+  background-color: rgb(6, 55, 73);
+  color: #fff;
+}
+
+.gold {
   text-align: center;
+  margin: 0 auto;
+  padding-top: 45px;
+  line-height: 1;
+  font-family: 'Limelight', cursive;
+  color: transparent;
+  font-size: 4.2rem;
+  background-image: linear-gradient(
+    to right,
+    rgb(70, 37, 35) 0,
+    rgb(203, 155, 81) 22%,
+    rgb(246, 226, 122) 45%,
+    rgb(246, 242, 192) 50%,
+    rgb(246, 226, 122) 55%,
+    rgb(203, 155, 81) 78%,
+    rgb(70, 37, 35) 100%
+     );
+  background-repeat: no-repeat;
+  background-clip: text;
+  // FOR FUTURE ANIMATION?
+  // background-position: 0 0;
+  // animation-name: shimmer;
+  // animation-duration: 2.2s;
+  // animation-iteration-count: infinite;
+  // background-size: 2rem 100%;
+  // background-color: rgb(153, 123, 0);
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-img {
+  display: block;
+  margin: 0 auto;
+  width: 13%;
+  height: 50px;
+  transform: rotate(11deg);
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+// @keyframes shimmer {
+//   0% {
+//     background-position: left;
+//   }
+//   100% {
+//     background-position: right;
+//   }
+// }
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .App-logo {
+//     animation: App-logo-spin infinite 20s linear;
+//   }
+// }
 
 .App-header {
   background-color: #282c34;
@@ -24,9 +68,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +76,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+main {
+  padding: 0 16px;
+  margin-top: 25px;
 }
