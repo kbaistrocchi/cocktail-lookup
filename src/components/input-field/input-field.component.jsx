@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setSearchTerm } from '../../redux/search/search.actions';
 
+import './input-field.styles.scss';
+
 
 const InputField = ({ id, name, value, setSearchTerm }) => (
 

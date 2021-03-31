@@ -8,6 +8,8 @@ import {
     updateLatestSearchTerm
 } from '../../redux/search/search.actions';
 
+import './search-form.styles.scss';
+
 class SearchForm extends React.Component {
 
     handleClick = (e) => {
@@ -71,6 +73,7 @@ class SearchForm extends React.Component {
 
                     <input
                         type="submit"
+                        className="search-button"
                         name={primarySearchItems.length > 0 ? "refine" : "init-search"}
                         value={
                             (primarySearchItems.length > 0 ? "Refine search" : "Search")
