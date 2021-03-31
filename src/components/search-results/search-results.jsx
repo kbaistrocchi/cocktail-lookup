@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SearchResultsHeader from '../results-header/results-header.component';
 
+import SearchResultsHeader from '../results-header/results-header.component';
+import './search-results.styles.scss';
 
 const SearchResults = ({
         filteredItems,
@@ -19,12 +20,12 @@ const SearchResults = ({
                     <SearchResultsHeader/>
                     {
                         (latestSecondaryTerm.length > 0) ? 
-                        <ul>
+                        <ul className="search-results">
                             {filteredItems.map(item => (
                                 <li key={item.idDrink}>{item.strDrink}</li>
                             ))}
                         </ul> :
-                            <ul>
+                            <ul className="search-results">
                                 {primarySearchItems.map(item => (
                                     <li key={item.idDrink}>{item.strDrink}</li>
                                 ))}
