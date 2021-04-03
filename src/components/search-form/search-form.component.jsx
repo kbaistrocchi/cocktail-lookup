@@ -73,7 +73,7 @@ class SearchForm extends React.Component {
 
                     <input
                         type="submit"
-                        className="search-button"
+                        className="search-button button"
                         name={primarySearchItems.length > 0 ? "refine" : "init-search"}
                         value={
                             (primarySearchItems.length > 0 ? "Refine search" : "Search")
