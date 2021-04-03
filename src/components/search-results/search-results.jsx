@@ -16,7 +16,7 @@ const SearchResults = ({
         }
         else {
             return (
-                <div>
+                <div className="search-results-block">
                     <SearchResultsHeader/>
                     {
                         (latestSecondaryTerm.length > 0) ? 
@@ -31,8 +31,6 @@ const SearchResults = ({
                                 ))}
                             </ul>
                     }
-                    
-                    <hr/>
                 </div>
 
                     
