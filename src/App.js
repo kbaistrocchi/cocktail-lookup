@@ -1,6 +1,7 @@
 import './App.scss';
 import SearchForm from './components/search-form/search-form.component.jsx';
 import SearchResults from './components/search-results/search-results.jsx';
+import Footer from './components/footer/footer.component.jsx';
 
 import martini from './assets/martini.svg';
 
@@ -17,6 +18,7 @@ function App() {
 
            
       </main>
+      <Footer/>
     </div>
   );
 }
