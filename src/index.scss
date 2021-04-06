@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Limelight&family=Montserrat:wght@400;700&display=swap');
+@import './sassStyles/mixins';
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  @include medium {
+    font-size: 20px;
+  }
 }
 
 body {
@@ -9,7 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  font-size: 18px;
+  
 }
 
 code {

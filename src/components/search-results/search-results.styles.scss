@@ -1,7 +1,17 @@
+@import '../../sassStyles/mixins';
+
 .search-results-block {
     border: 2px solid #fff;
     padding: 20px;
     margin-top: 50px;
+
+    @include medium {
+        padding: 30px;
+    }
+    @include large {
+        padding: 40px;
+    }
+
 }
 
 // Loading Image

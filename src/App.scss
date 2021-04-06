@@ -1,3 +1,5 @@
+@import './sassStyles/mixins.scss';
+
 .App {
   background-color: rgb(6, 55, 73);
   color: #fff;
@@ -79,6 +81,6 @@
 }
 
 main {
-  padding: 0 16px;
+  @include padding;
   margin-top: 25px;
 }

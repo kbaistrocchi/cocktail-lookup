@@ -1,8 +1,12 @@
+@import '../../sassStyles/mixins.scss';
+
 footer {
     background-color: #84989f;
     margin-top: 100px;
-    padding: 30px 16px;
     font-size: 0.75rem;
+    @include padding;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .koala {
