@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import SearchResultsHeader from '../results-header/results-header.component';
 import './search-results.styles.scss';
 
+import shaker from '../../assets/cocktail-shaker.svg';
+
 const SearchResults = ({
         filteredItems,
         isFetching,
@@ -12,7 +14,7 @@ const SearchResults = ({
     }) => {
 
         if (isFetching) {
-            return <div>Loading...</div>
+            return <div className="loading"><img src={shaker} alt="cocktail shaker"/></div>
         }
         else {
             return (

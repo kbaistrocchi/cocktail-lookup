@@ -4,9 +4,34 @@
     margin-top: 50px;
 }
 
+// Loading Image
+.loading {
+    img {
+        display: block;
+        margin: 30px auto 0 auto;
+        height: 50px;
+        animation-name: shake;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(20deg) translate(10px, -20px);
+    }
+    100% {
+        transform: rotate(10deg);
+    }
+}
+
 
 .search-results {
     list-style: none;
+    padding: 0;
 
     li {
         text-align: left;
