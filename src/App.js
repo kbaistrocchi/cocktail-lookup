@@ -16,7 +16,6 @@ function App() {
         <SearchForm/>
         <SearchResults/>
 
-           
       </main>
       <Footer/>
     </div>
